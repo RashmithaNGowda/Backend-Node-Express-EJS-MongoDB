@@ -11,6 +11,7 @@ on:
 
 permissions:
   contents: read
+  packages: write
 
 jobs:
   test:
@@ -34,4 +35,6 @@ jobs:
 
       - name: Test
         run: npm test --if-present
-        
+
+      - name: Security audit
+        run: npm audit --audit-level=high
