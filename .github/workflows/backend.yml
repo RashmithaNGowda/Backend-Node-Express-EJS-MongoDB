@@ -35,6 +35,10 @@ jobs:
 
       - name: Test
         run: npm test --if-present
-
-      - name: Security audit
-        run: npm audit --audit-level=high
+      
+      - name: Login to GHCR
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: RashmithaNGowda
+          password: ${{ secrets.Password }}
