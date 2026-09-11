@@ -12,6 +12,9 @@ permissions:
   contents: read
   packages: write
 
+env:
+  IMAGE_NAME: ghcr.io/rashmithangowda/backend-node-express
+
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -42,10 +45,10 @@ jobs:
 
       - name: Build Docker image
         run: |
-          docker build \
-            -t ghcr.io/${{ github.repository_owner }}/backend-node-express:${{ github.sha }} .
+            docker build \
+              -t $IMAGE_NAME:${{ github.sha }} .
 
       - name: Push Docker image
         run: |
-          docker push \
-            ghcr.io/${{ github.repository_owner }}/backend-node-express:${{ github.sha }}
+              docker push \
+                $IMAGE_NAME:${{ github.sha }}
